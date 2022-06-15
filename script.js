@@ -110,7 +110,7 @@ window.addEventListener('load', function(){
         resetFractal();
         updateSliders();
         drawFractal();
-    })
+    });
 
     function updateSliders(){
         slider_spread.value = spread;
@@ -119,5 +119,17 @@ window.addEventListener('load', function(){
         label_sides.innerText = 'Sides: ' + sides;
     }
     updateSliders();
+
+    window.addEventListener('resize', function(){
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        size = canvas.width < canvas.height ? canvas.width * 0.3 : canvas.height
+        * 0.3;
+        ctx.shadowColor = 'rgba(0,0,0,0.7)';
+        ctx.shadowOffsetX = 10;
+        ctx.shadowOffsetY = 5;
+        ctx.shadowBlur = 10;
+        drawFractal();
+    });
 
 });
